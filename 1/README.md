@@ -29,10 +29,10 @@ static ALWAYS_INLINE k_spinlock_key_t k_spin_lock(struct k_spinlock *l) {
                 arch_spin_relax();
         }
 
-        if (&l->used_by == node) {
+        if (l->used_by == node) {
                 arch_spin_relax();
         } else {
-                &l->used_by = node;
+                l->used_by = node;
         }
 }
 
